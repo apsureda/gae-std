@@ -23,5 +23,5 @@ steps:
 
 # Deploy app to App Engine
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy', '--project', '${_DST_PROJECT}']
+  args: ['app', 'deploy']
 
