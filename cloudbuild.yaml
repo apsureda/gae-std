@@ -5,12 +5,11 @@ steps:
   args:
   - kms
   - decrypt
-  - --ciphertext-file=secrets-${_DST_ENVIRONMENT}.sh.enc
+  - --ciphertext-file=secrets-${BRANCH_NAME}.sh.enc
   - --plaintext-file=secrets.sh
   - --location=global
   - --keyring=CLOUDBUILD-SECRETS
   - --key=CLOUDBUILD-KEY
-  - --project=${_DST_PROJECT}
 
 # Do whatever is needed before deploying the app
 - name: 'ubuntu'
@@ -19,6 +18,7 @@ steps:
   - 'BUILD=$BUILD_ID'
   - 'PROJECT=$PROJECT_ID'
   - 'REV=$REVISION_ID'
+  - 'BRANCH=$BRANCH_NAME'
   - 'TAG=$TAG_NAME'
 
 # Deploy app to App Engine
