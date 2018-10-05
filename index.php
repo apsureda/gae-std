@@ -81,6 +81,6 @@ $results = $db->query('SELECT * from entries');
             <div><textarea name="content" rows="3" cols="60"></textarea></div>
             <div><input type="submit" value="Sign Guestbook"></div>
         </form>
-      <p>Build: [CLOUD_BULD_TAG]</p>
+      <p>Build: [BULD_ID]</p>
     </body>
 </html>
