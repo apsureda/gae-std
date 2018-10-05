@@ -20,6 +20,7 @@ steps:
   - 'REV=$REVISION_ID'
   - 'BRANCH=$BRANCH_NAME'
   - 'TAG=$TAG_NAME'
+  - 'DB_CONNECTION_STR=$_DB_CONNECTION_STR'
 
 # Deploy app to App Engine
 - name: 'gcr.io/cloud-builders/gcloud'
