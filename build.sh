@@ -1,12 +1,11 @@
-#!/bin/bash -x
+#!/bin/bash
 
 # get the decrypted secrets
 . secrets.sh
 
-# Update the Cloud SQL connection string and password in the app.yaml file
-APP_CONFIG=app.yaml
-sed -e "s/\[SECRET_CLOUDSQL_PASSWORD\]/${CLOUDSQL_PASSWORD}/" ${APP_CONFIG} > ${APP_CONFIG}_new && mv ${APP_CONFIG}_new ${APP_CONFIG}
-sed -e "s/\[CLOUDSQL_CONNECTION\]/${DB_CONNECTION_STR}/" ${APP_CONFIG} > ${APP_CONFIG}_new && mv ${APP_CONFIG}_new ${APP_CONFIG}
+echo "CLOUDSQL_USER = \"root\"" > db_conn.ini
+echo "CLOUDSQL_PASSWORD = \"${CLOUDSQL_PASSWORD}\"" >> db_conn.ini
+echo "CLOUDSQL_DSN = \"${DB_CONNECTION_STR}\"" >> db_conn.ini
 
 # add the build's tag to the home page
 HOME_PAGE=index.php
