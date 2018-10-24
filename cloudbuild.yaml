@@ -5,7 +5,7 @@ steps:
   args:
   - kms
   - decrypt
-  - --ciphertext-file=secrets-${BRANCH_NAME}.sh.enc
+  - --ciphertext-file=secrets-${_ENV_NAME}.sh.enc
   - --plaintext-file=secrets.sh
   - --location=global
   - --keyring=CLOUDBUILD-SECRETS
