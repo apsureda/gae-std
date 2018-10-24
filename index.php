@@ -18,9 +18,11 @@
 // Get the user email from the header provided by the IAP
 $iap_user = $_SERVER['X-Goog-Authenticated-User-Email'];
 
+$db_ini = parse_ini_file("db_conn.ini");
+
 // Ensure the required environment variables are set to run the application
-if (!getenv('CLOUDSQL_DSN') || !getenv('CLOUDSQL_USER') || false === getenv('CLOUDSQL_PASSWORD')) {
-    die('Set CLOUDSQL_DSN, CLOUDSQL_USER, and CLOUDSQL_PASSWORD environment variables');
+if (!$db_ini['CLOUDSQL_DSN'] || !$db_ini['CLOUDSQL_USER'] || false === $db_ini['CLOUDSQL_PASSWORD']) {
+    die('Set CLOUDSQL_DSN, CLOUDSQL_USER, and CLOUDSQL_PASSWORD in db_conn.ini file.');
 }
 
 # [START gae_cloudsql_example]
@@ -36,9 +38,9 @@ if (!getenv('CLOUDSQL_DSN') || !getenv('CLOUDSQL_USER') || false === getenv('CLO
 //     // for PostgreSQL
 //     $dsn = "pgsql:dbname=DATABASE;host=127.0.0.1";
 //
-$dsn = getenv('CLOUDSQL_DSN');
-$user = getenv('CLOUDSQL_USER');
-$password = getenv('CLOUDSQL_PASSWORD');
+$dsn = $db_ini['CLOUDSQL_DSN'];
+$user = $db_ini['CLOUDSQL_USER'];
+$password = $db_ini['CLOUDSQL_PASSWORD'];
 
 // create the PDO client
 $db = new PDO($dsn, $user, $password);
@@ -75,12 +77,12 @@ $results = $db->query('SELECT * from entries');
             <?php endforeach ?>
         <?php endif ?>
 
-        <h2>Sign the Guestbook</h2>
+        <h2><font color="red">Sign the Guestbook</font></h2>
         <form action="/" method="post">
             <div>Name: <input name="name" value="<?= $iap_user ?>"/></div>
             <div><textarea name="content" rows="3" cols="60"></textarea></div>
             <div><input type="submit" value="Sign Guestbook"></div>
         </form>
-      <p>Build: [CLOUD_BULD_TAG]</p>
+      <p>Build: [BULD_ID]</p>
     </body>
 </html>

@@ -9,6 +9,6 @@ env_variables:
   # values obtained when configuring your Cloud SQL instance.
   CLOUDSQL_USER: "root"
   CLOUDSQL_PASSWORD: [SECRET_CLOUDSQL_PASSWORD]
-  CLOUDSQL_DSN: "mysql:dbname=dft-ddt-teanbiscuits-dev;unix_socket=/cloudsql/apszaz-dft-cicd:europe-west2:ddt-nonprod"
+  CLOUDSQL_DSN: "[CLOUDSQL_CONNECTION]"
 # [END gae_cloudsql_mysql_env]
 
