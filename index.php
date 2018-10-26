@@ -77,7 +77,7 @@ $results = $db->query('SELECT * from entries');
             <?php endforeach ?>
         <?php endif ?>
 
-        <h2><font color="black">Sign the Guestbook</font></h2>
+        <h2><font color="blue">Sign the Guestbook</font></h2>
         <form action="/" method="post">
             <div>Name: <input name="name" value="<?= $iap_user ?>"/></div>
             <div><textarea name="content" rows="3" cols="60"></textarea></div>
